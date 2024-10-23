@@ -1,0 +1,21 @@
+create table postac (id_postaci INTEGER primary key auto_increment, nazwa VARCHAR(40), rodzaj TEXT, data_ur DATE NOT NULL, wiek INTEGER NOT NULL);
+Query OK, 0 rows affected (0.07 sec)
+
+INSERT INTO postac (nazwa, rodzaj, data_ur, wiek) 
+VALUES ('Bjorn', 'wiking', '2000-01-01', 24), 
+('Drozd', 'ptak', '1999-12-31', 24), 
+('Tesciowa', 'kobieta', '1950-01-01', 74);
+
+UPDATE postac
+    -> SET wiek = 88
+    -> WHERE nazwa = 'Tesciowa';
+
+ create table walizka (id_walizki INTEGER primary key auto_increment, pojemnosc INTEGER NOT NULL, kolor ENUM('rozowy', 'czerwony', 'teczowy', 'zolty') DEFAULT 'rozowy' , id_wlasciciela INTEGER,  FOREIGN KEY (id_wlasciciela) REFERENCES
+ postac(id_postaci) ON DELETE CASCADE);
+
+INSERT INTO walizka (pojemnosc, id_wlasciciela)
+    -> VALUES (21, 1),
+    -> (37, 3);
+
+
+
